@@ -5,14 +5,10 @@ namespace pet_store.Controllers
 {
     public class HomeController : Controller
     {
-        PetStoreContext context;
-        public HomeController(PetStoreContext context)
-        {
-            this.context = context;
-        }
+        readonly PetStoreContext context;
+        public HomeController(PetStoreContext context) => this.context = context;
         public IActionResult Index()
         {
-            
             return View(context.Animals);
         }
     }
