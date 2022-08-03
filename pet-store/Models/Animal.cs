@@ -2,11 +2,12 @@
 {
     public class Animal
     {
-        public string? AnimalID { get; set; }
+        public int AnimalID { get; set; }
         public string? Name { get; set; }
         public int Age { get; set; }
         public string? PictureSrc { get; set; }
+        public int CategoryID { get; set; }
         public Category? Category { get; set; }
-        public IEnumerable<Comment>? Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<pet_store.Models.Animal>
 @{
     Layout = null;
 }
@@ -11,5 +11,14 @@
     <title>Index</title>
 </head>
 <body>
+    @foreach (var animal in Model)
+    {
+        <div>
+        <p>@animal.Name</p>
+        <img src="@animal.PictureSrc" width="100" height="100"/>
+        <p>@animal.Category?.Name</p>
+        <p>@animal.Age</p>
+        </div>
+    }
 </body>
 </html>
