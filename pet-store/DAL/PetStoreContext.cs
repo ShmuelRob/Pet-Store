@@ -5,9 +5,9 @@ namespace pet_store.DAL
 {
     public class PetStoreContext : DbContext
     {
-        public DbSet<Animal>? Animals { get; set; }
-        public DbSet<Category>? Categories { get; set; }
-        public DbSet<Comment>? Comments { get; set; }
+        public virtual DbSet<Animal>? Animals { get; set; }
+        public virtual DbSet<Category>? Categories { get; set; }
+        public virtual DbSet<Comment>? Comments { get; set; }
 
         public PetStoreContext(DbContextOptions<PetStoreContext> options)
             : base(options) { }
@@ -54,7 +54,7 @@ namespace pet_store.DAL
             modelBuilder.Entity<Comment>().HasData(
                 new { CommentID = 1, AnimalID = 1, Content = "king of animals" },
                 new { CommentID = 2, AnimalID = 2, Content = "the man's best friend" },
-                new { CommentID = 3, AnimalID = 1, Content = "he is like Simba" },
+                new { CommentID = 3, AnimalID = 1, Content = "Simba is his brother" },
                 new { CommentID = 4, AnimalID = 5, Content = "licks itself" },
                 new { CommentID = 5, AnimalID = 6, Content = "can change colors" },
                 new { CommentID = 6, AnimalID = 7, Content = "the biggest fish in the world" },

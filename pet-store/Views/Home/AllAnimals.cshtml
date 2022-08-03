@@ -1,0 +1,45 @@
+﻿@model IEnumerable<pet_store.Models.Category>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllAnimals</title>
+</head>
+<body>
+    @foreach (var category in Model)
+    {
+        <div>
+            @category.Name
+            @foreach (var animal in category.Animals!)
+            {
+                <div>
+                    <p>
+                        Name: @animal.Name<br />
+                        <img src="@animal.PictureSrc" width="100" height="100" /><br />
+                        Category: @animal.Category?.Name<br />
+                        Age: @animal.Age<br />
+                    </p>
+                    @foreach (var comment in animal.Comments!)
+                    {
+                        <p>Review: @comment.Content<br /></p>
+                    }
+                </div>
+                <br />
+                <br />
+            }
+        </div>
+        <br />
+        <br />
+    }
+</body>
+</html>
+
+
+
+
+
