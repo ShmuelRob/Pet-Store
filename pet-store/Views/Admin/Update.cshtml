@@ -15,13 +15,14 @@
         animal @Model.Name updated
         new Age: @Model.Age
         @Model.Category
+        @Model.Description
+        <img src="@Model.PictureSrc" />
+        @Model.PictureSrc
         @if (Model.Comments is not null)
-        {
             @foreach (var item in Model.Comments)
             {
                 @item.Content
             }
-        }
     </p>
 </body>
 </html>

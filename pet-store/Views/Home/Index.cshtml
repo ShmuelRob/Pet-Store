@@ -11,6 +11,8 @@
     <title>pet store</title>
 </head>
 <body>
+    @*<a   contr action="Index">enter as admin</a>*@
+    <a asp-controller="Admin" asp-action="Index"  >enter as admin</a>
     @foreach (var item in Model)
     {
         <p>@item.Name</p>

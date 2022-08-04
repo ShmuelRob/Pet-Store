@@ -34,16 +34,17 @@ namespace pet_store.Controllers
             //    .ThenInclude(a => a.Comments);
             return View(animal);
         }
-        public IActionResult Update()
-        //0524230413
+        public IActionResult Update(int id)
         {
 
 
             return View();
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
+            //var animal = context.Animals!
+                //.ToList()[id];
             deleteService.DeleteAnimal(1);
             var categories = context.Categories!
                 .Include(c => c.Animals!)
