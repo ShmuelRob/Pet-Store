@@ -1,0 +1,26 @@
+﻿@model pet_store.Models.Animal
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <p>
+        animal @Model.Name created
+        new Age: @Model.Age
+        @Model.Category
+        @foreach (var item in Model.Comments!)
+        {
+            @item.Content
+        }
+        @Model.Comments
+    </p>
+
+</body>
+</html>
