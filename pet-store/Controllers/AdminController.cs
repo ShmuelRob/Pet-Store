@@ -54,6 +54,7 @@ namespace pet_store.Controllers
 
         public IActionResult DeleteAnimal(int id)
         {
+            
             return View();
         }
 
