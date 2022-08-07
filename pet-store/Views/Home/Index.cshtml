@@ -1,21 +1,23 @@
 ﻿@model IEnumerable<pet_store.Models.Animal>
 @{
-    Layout = null;
+    ViewData["Title"] = "pet store";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>pet store</title>
-</head>
-<body>
-    @*<a   contr action="Index">enter as admin</a>*@
-    <a asp-controller="Admin" asp-action="Index"  >enter as admin</a>
+<div class="container">
     @foreach (var item in Model)
     {
-        <p>@item.Name</p>
+        <div class="card">
+            @item.Name<br />
+            <img src="@item.PictureSrc" width="100" height="100" /><br />
+            @item.Description<br />
+            Reviews<br />
+            @foreach (var comment in item.Comments!)
+            {
+                @comment.Content
+                <br />
+            }
+            <br />
+        </div>
     }
-</body>
-</html>
+</div>

@@ -1,0 +1,21 @@
+﻿.container {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*margin: 1rem;*/
+}
+
+.card {
+   /* border: 1px solid black;
+    width: 50px;*/
+    background: #FCF6F5FF;
+    height: 12rem;
+    width: 16rem;
+    margin: 9px;
+    border-radius: 13%;
+}
+
+ul {
+    list-style-type: none;
+}

@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using pet_store.DAL;
+using pet_store.Services.HomeServices;
 
 namespace pet_store.Controllers
 {
     public class HomeController : Controller
     {
-        readonly PetStoreContext context;
-        public HomeController(PetStoreContext context) => this.context = context;
+        readonly IHomeContext context;
+        public HomeController(IHomeContext context)
+            => this.context = context;
 
-        public IActionResult Index()
-            => View(context.Animals!.OrderByDescending(a => a.Comments!.Count).Take(2));
+        public IActionResult Index() => 
+            View(context.Animals
+                .OrderByDescending(a => a.Comments!.Count).Take(2));
     }
 }

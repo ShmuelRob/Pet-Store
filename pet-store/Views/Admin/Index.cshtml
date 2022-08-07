@@ -1,0 +1,16 @@
+﻿@model IEnumerable<pet_store.Models.Category>
+@{
+    ViewData["Title"] = "Admin Panel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Admin Panel</h1>
+
+<label for="category"> select category
+    <select name="category">
+        @foreach (var category in Model)
+        {
+            <option value="@category.CategoryID" >@category.Name</option>
+        }
+    </select>
+</label>

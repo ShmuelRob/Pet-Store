@@ -39,16 +39,16 @@ namespace pet_store.DAL
                 );
 
             modelBuilder.Entity<Animal>().HasData(
-                new { AnimalID = 1, CategoryID = 1, Age = 5, Name = "Lion", PictureSrc = sources[1] },
-                new { AnimalID = 2, CategoryID = 1, Age = 2, Name = "Dog", PictureSrc = sources[2] },
-                new { AnimalID = 3, CategoryID = 2, Age = 12, Name = "Eagle", PictureSrc = sources[3] },
-                new { AnimalID = 4, CategoryID = 3, Age = 3, Name = "Shark", PictureSrc = sources[4] },
-                new { AnimalID = 5, CategoryID = 1, Age = 4, Name = "Cat", PictureSrc = sources[5] },
-                new { AnimalID = 6, CategoryID = 5, Age = 1, Name = "Chameleon", PictureSrc = sources[6] },
-                new { AnimalID = 7, CategoryID = 3, Age = 15, Name = "Whale", PictureSrc = sources[7] },
-                new { AnimalID = 8, CategoryID = 2, Age = 2, Name = "Pigeon", PictureSrc = sources[8] },
-                new { AnimalID = 9, CategoryID = 5, Age = 4, Name = "Alligator", PictureSrc = sources[9] },
-                new { AnimalID = 10, CategoryID = 2, Age = 9, Name = "Owl", PictureSrc = sources[10] }
+                new { AnimalID = 1, CategoryID = 1, Age = 5, Name = "Lion", PictureSrc = sources[1], Description="description for lion" },
+                new { AnimalID = 2, CategoryID = 1, Age = 2, Name = "Dog", PictureSrc = sources[2], Description = "description for dog" },
+                new { AnimalID = 3, CategoryID = 2, Age = 12, Name = "Eagle", PictureSrc = sources[3], Description = "description for eagle" },
+                new { AnimalID = 4, CategoryID = 3, Age = 3, Name = "Shark", PictureSrc = sources[4], Description = "description for shark" },
+                new { AnimalID = 5, CategoryID = 1, Age = 4, Name = "Cat", PictureSrc = sources[5], Description = "description for cat" },
+                new { AnimalID = 6, CategoryID = 5, Age = 1, Name = "Chameleon", PictureSrc = sources[6], Description = "description for chameleon" },
+                new { AnimalID = 7, CategoryID = 3, Age = 15, Name = "Whale", PictureSrc = sources[7], Description="description for whale" },
+                new { AnimalID = 8, CategoryID = 2, Age = 2, Name = "Pigeon", PictureSrc = sources[8], Description = "description for pigeon" },
+                new { AnimalID = 9, CategoryID = 5, Age = 4, Name = "Alligator", PictureSrc = sources[9], Description = "description for alligator" },
+                new { AnimalID = 10, CategoryID = 2, Age = 9, Name = "Owl", PictureSrc = sources[10], Description = "description for owl" }
                 );
 
             modelBuilder.Entity<Comment>().HasData(

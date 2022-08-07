@@ -2,8 +2,8 @@
 
 namespace pet_store.Services
 {
-    public interface IUpdateService
-    {
-        void UpdateAnimal(int animalID, Animal details);
-    }
+    //public interface IUpdateService
+    //{
+    //    void UpdateAnimal(int animalID, Animal details);
+    //}
 }

@@ -2,8 +2,8 @@
 
 namespace pet_store.Services
 {
-    public interface ICreateService
-    {
-        void CreateAnimal(Animal animal);
-    }
+    //public interface ICreateService
+    //{
+    //    void CreateAnimal(Animal animal);
+    //}
 }
