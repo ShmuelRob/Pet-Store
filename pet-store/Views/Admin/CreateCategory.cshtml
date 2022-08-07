@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Create Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Category</h1>
+
+<form method="post" asp-action="CategoryCreated">
+    <label>Category Name: <input name="categoryName" type="text" /></label>
+    <button type="submit">Create</button>
+</form>

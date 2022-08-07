@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Admin - Create Animal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Animal</h1>
+
+<form method="post" asp-action="AnimalCreated">
+    <label>Animal Name<input name="animalName" type="text" /></label>
+    <label>Category Name<input name="categoryName" type="text" /></label>
+    <label>Age<input name="age" type="number" /></label>
+    <label>Description<input name="description" type="text" /></label>
+    <label>Image Source<input name="imageSource" type="text" /></label>
+    <button type="submit" asp-action="AnimalCreated" />
+</form>

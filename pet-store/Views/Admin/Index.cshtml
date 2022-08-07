@@ -4,13 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Admin Panel</h1>
+<h1>Admin Panel</h1><br />
+<a asp-action="CreateAnimal">Add new Animal</a><br />
+<a asp-action="CreateCategory">Add new Category</a><br />
+<form method="post" asp-action="AnimalsByCategory">
+    <label for="category">
+        select category
+        <select id="category" name="category">
+            @foreach (var category in Model)
+            {
+                <option value="@category.CategoryID">@category.Name</option>
+            }
+        </select>
+        <button type="submit">Search Category</button>
+        @*<button asp-action="AnimalsByCategory" runat="server">Search Category</button>*@
+    </label>
 
-<label for="category"> select category
-    <select name="category">
-        @foreach (var category in Model)
-        {
-            <option value="@category.CategoryID" >@category.Name</option>
-        }
-    </select>
-</label>
+
+</form>
