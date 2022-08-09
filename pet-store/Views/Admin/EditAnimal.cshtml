@@ -1,8 +1,23 @@
 ﻿@model pet_store.Models.Animal
 @{
-    ViewData["Title"] = "EditAnimal";
+    ViewData["Title"] = "Edit Animal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Edit Animal</h1>
-
+<br />
+<form method="post" asp-action="AnimalEdited" asp-route-id="@Model.AnimalID">
+    <label for="animalName">Name: <input name="animalName" type="text" placeholder="@Model.Name"></label><br />
+    <select>
+        @foreach (var item in @ViewBag.Categories)
+        {
+            if (item == ViewBag.CategoryName){<option selected>@item</option>}
+            else{<option>@item</option>}
+        }
+    </select>
+    <label for="categoryName">Category Name: <input name="categoryName" type="text" placeholder="@ViewBag.CategoryName"></label><br />
+    <label for="age">Age: <input name="age" type="number" placeholder="@Model.Age"></label><br />
+    <label for="description">Description: <input name="description" type="text" placeholder="@Model.Description"></label><br />
+    <label for="imageSource">Image Source: <input name="imageSource" type="text" placeholder="@Model.ImageSource"></label><br />
+    <button type="submit" />
+</form>

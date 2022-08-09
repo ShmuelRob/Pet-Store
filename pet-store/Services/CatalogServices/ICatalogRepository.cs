@@ -2,8 +2,9 @@
 
 namespace pet_store.Services.CatalogServices
 {
-    public interface ICatalogContext
+    public interface ICatalogRepository
     {
         IEnumerable<Category> Categories { get; }
+        Category GetCategory(int id);
     }
 }

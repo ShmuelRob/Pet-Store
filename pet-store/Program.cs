@@ -7,13 +7,10 @@ using pet_store.Services.HomeServices;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PetStoreContext>(options => options.UseSqlite("Data Source=c:\\temp1\\animalDb.db"));
-builder.Services.AddTransient<IHomeContext, HomeContext>();
-builder.Services.AddTransient<ICatalogContext, CatalogContext>();
-builder.Services.AddTransient<IAnimalContext, AnimalContext>();
-builder.Services.AddTransient<IAdminContext, AdminContext>();
-//builder.Services.AddTransient<ICreateService, CreateService>();
-//builder.Services.AddTransient<IDeleteService, DeleteService>();
-//builder.Services.AddTransient<IUpdateService, UpdateService>();
+builder.Services.AddTransient<IHomeRepository, HomeRepository>();
+builder.Services.AddTransient<ICatalogRepository, CatalogRepository>();
+builder.Services.AddTransient<IAnimalRepository, AnimalRepository>();
+builder.Services.AddTransient<IAdminRepository, AdminRepository>();
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
@@ -26,9 +23,18 @@ using (var scope = app.Services.CreateScope())
 
 app.UseStaticFiles();
 app.UseRouting();
-
-app.UseEndpoints(e => e.MapDefaultControllerRoute());
-//app.UseEndpoints(endpoints => endpoints.MapControllerRoute("default", "{controller=home}/{Action=index}"));
-//app.UseEndpoints(endpoints => endpoints.MapControllerRoute("default", "{controller=Home}/{Action=Index}/{id?}"));
+app.UseEndpoints(endpoints => endpoints.MapControllerRoute("default", "{controller=Home}/{Action=Index}/{id?}"));
 
 app.Run();
+
+
+
+
+
+/*
+ * 1. finish the edit and the delete in the server
+ * 2. make an option to move to all categories in the catalog
+ * 3. make all the views pretty, put only what i need there
+ * 4. handle all the exeptions - (where i have an option to enter a name of category or id that is not exist etc...)
+ * 5. make an 404 page
+ */

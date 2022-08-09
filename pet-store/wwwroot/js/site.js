@@ -6,3 +6,4 @@ var ensureDelete = function (animalName) {
         return false;
     }
 };
+//# sourceMappingURL=site.js.map

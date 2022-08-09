@@ -2,7 +2,7 @@
 
 namespace pet_store.Services.AdminServices
 {
-    public interface IAdminContext
+    public interface IAdminRepository
     {
         IEnumerable<Category> Categories { get; }
         IEnumerable<Animal> Animals { get; }

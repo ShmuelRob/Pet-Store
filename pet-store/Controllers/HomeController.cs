@@ -5,12 +5,12 @@ namespace pet_store.Controllers
 {
     public class HomeController : Controller
     {
-        readonly IHomeContext context;
-        public HomeController(IHomeContext context)
-            => this.context = context;
+        readonly IHomeRepository repository;
+        public HomeController(IHomeRepository repository)
+            => this.repository = repository;
 
         public IActionResult Index() => 
-            View(context.Animals
+            View(repository.Animals
                 .OrderByDescending(a => a.Comments!.Count).Take(2));
     }
 }

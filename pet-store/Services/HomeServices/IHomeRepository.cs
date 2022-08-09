@@ -2,7 +2,7 @@
 
 namespace pet_store.Services.HomeServices
 {
-    public interface IHomeContext
+    public interface IHomeRepository
     {
         IEnumerable<Animal> Animals { get; }
     }

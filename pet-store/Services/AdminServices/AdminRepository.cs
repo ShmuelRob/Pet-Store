@@ -4,10 +4,10 @@ using pet_store.Models;
 
 namespace pet_store.Services.AdminServices
 {
-    public class AdminContext : IAdminContext
+    public class AdminRepository : IAdminRepository
     {
         readonly PetStoreContext context;
-        public AdminContext(PetStoreContext context)
+        public AdminRepository(PetStoreContext context)
             => this.context = context;
         public IEnumerable<Category> Categories => context.Categories!
             .Include(c => c.Animals)!.ThenInclude(a => a.Comments);

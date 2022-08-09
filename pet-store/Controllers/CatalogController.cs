@@ -5,10 +5,10 @@ namespace pet_store.Controllers
 {
     public class CatalogController : Controller
     {
-        readonly ICatalogContext context;
-        public CatalogController(ICatalogContext context)
-            => this.context = context;
+        readonly ICatalogRepository repository;
+        public CatalogController(ICatalogRepository repository)
+            => this.repository = repository;
         public IActionResult Index(int id = 1)
-            => View(context.Categories.Single(c => c.CategoryID == id));
+            => View(repository.GetCategory(id));
     }
 }
