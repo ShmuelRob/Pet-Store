@@ -23,9 +23,9 @@
     {
         <div>
             Comments:
-            @foreach (var comment in @Model.Comments!)
+            @foreach (var comment in @Model.Comments!.Select(c=> c.Content))
             {
-                <p>@comment.Content</p>
+                <p>@comment</p>
             }
         </div>
     }

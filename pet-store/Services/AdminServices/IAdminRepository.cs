@@ -8,5 +8,7 @@ namespace pet_store.Services.AdminServices
         IEnumerable<Animal> Animals { get; }
         void AddCategory(Category category);
         void AddAnimal(Animal animal);
+        void EditAnimal(int id, Animal animal);
+        bool DeleteAnimal(int id);
     }
 }

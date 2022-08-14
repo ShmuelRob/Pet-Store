@@ -11,7 +11,7 @@ namespace pet_store.Services.CatalogServices
         public virtual IEnumerable<Category> Categories => context.Categories!
             .Include(c => c.Animals)!.ThenInclude(a => a.Comments);
 
-        public Category GetCategory(int id) =>
-            Categories.Single(c => c.CategoryID == id);
+        public Category? GetCategory(int id) =>
+            Categories.SingleOrDefault(c => c.CategoryID == id);
     }
 }

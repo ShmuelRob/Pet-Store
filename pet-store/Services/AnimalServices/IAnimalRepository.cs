@@ -7,6 +7,6 @@ namespace pet_store.Services.AnimalServices
         IEnumerable<Animal> Animals { get; }
         IEnumerable<Comment> Comments { get; }
         void AddComment(int animalId, Comment comment);
-        Animal GetAnimal(int id);
+        Animal? GetAnimal(int id);
     }
 }

@@ -20,19 +20,17 @@ namespace pet_store.Controllers
             ViewData["Categories"] = new SelectList(repository.Categories, "Id", "Name");
             return View(repository.Categories);
         }
-
         public IActionResult AnimalsByCategory(int category)
             => View(repository.Categories.Single(c => c.CategoryID == category));
-        public IActionResult CreateAnimal() => View();
+        public IActionResult CreateAnimal() => View(repository.Categories);
         public IActionResult AnimalCreated(string animalName,
-            string categoryName, int age, string description, string imageSource)
+            int categoryID, int age, string description, string imageSource)
         {
-            var categoryId = repository.Categories.Single(c => c.Name == categoryName).CategoryID;
+            //var categoryId = repository.Categories.Single(c => c.Name == categoryName).CategoryID;
             var animal = new Animal
             {
-                AnimalID = repository.Animals.Count() + 1,
                 Name = animalName,
-                CategoryID = categoryId,
+                CategoryID = categoryID,
                 Age = age,
                 Description = description,
                 ImageSource = imageSource
@@ -40,55 +38,32 @@ namespace pet_store.Controllers
             repository.AddAnimal(animal);
             return RedirectToAction("Index");
         }
-
         public IActionResult CreateCategory() => View();
         public IActionResult CategoryCreated(string categoryName)
         {
             repository.AddCategory(new Category { CategoryID = repository.Categories.Count() + 1, Name = categoryName });
             return RedirectToAction("Index");
         }
-
         public IActionResult EditAnimal(int id)
         {
             var animal = repository.Animals.Single(a => a.AnimalID == id);
-            ViewBag.CategoryName = repository.Categories!.Single(c => c.CategoryID == animal.CategoryID).Name;
-            ViewBag.Categories = repository.Categories!.Select(c => c.Name);
+            ViewBag.Categories = new Dictionary<string, int>();
+            //ViewBag.CategoryName = repository.Categories!.Single(c => c.CategoryID == animal.CategoryID).Name;
+            repository.Categories!.ToList().ForEach(c => ViewBag.Categories.Add(c.Name!, c.CategoryID));
             return View(animal);
         }
-
-        public IActionResult AnimalEdited(int id, string categoryName, int age, string description, string imageSource)
+        public IActionResult AnimalEdited(int id, string name, int categoryID,
+            int age, string description, string imageSource)
         {
-            var animal = repository.Animals.Single(a => a.AnimalID == id);
-            if (repository.Categories.Any(c => c.Name == categoryName))
-                animal.CategoryID = repository.Categories.Single(c => c.Name == categoryName).CategoryID;
-            if (age >= 0) animal.Age = age;
-            if (description is not null) animal.Description = description;
-            if (imageSource is not null) animal.ImageSource = imageSource;
-            return RedirectToAction("animal", "AnimalById", id);
+            var animal = new Animal { CategoryID = categoryID, Age = age,
+                Description = description, ImageSource = imageSource, Name = name };
+            repository.EditAnimal(id, animal);
+            return RedirectToAction("AnimalById", "animal", new { id });
         }
-
         public IActionResult DeleteAnimal(int id)
         {
-            
-            return View();
+            if(!repository.DeleteAnimal(id)) return View();
+            return RedirectToAction("Index");
         }
-
-        public IActionResult AnimalDeleted(int id)
-        {
-            return View();
-        }
-
-
-        //public IActionResult Delete(int id)
-        //{
-        //    //var animal = context.Animals!
-        //        //.ToList()[id];
-        //    //deleteService.DeleteAnimal(1);
-        //    var categories = context.Categories!
-        //        .Include(c => c.Animals!)
-        //        .ThenInclude(a => a.Comments);
-        //    return View(categories);
-        //}
-
     }
 }
