@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<pet_store.Models.Category>
 @{
-    ViewData["Title"] = "Admin - Create Animal";
+    ViewData["Title"] = "Create Animal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Create Animal</h1>
 
 <form method="post" asp-action="AnimalCreated">
-    <label>Animal Name<input name="animalName" type="text" /></label>
-    @*<label>Category Name<input name="categoryName" type="text" /></label>*@
+    <label>Animal Name<input name="animalName" type="text" /></label><br />
     <label>
         Category Name: 
         <select name="categoryID">
@@ -17,10 +16,9 @@
                 <option value="@item.CategoryID">@item.Name</option>
             }
         </select>
-    </label>
-    <label>Age<input name="age" type="number" /></label>
-    <label>Description<input name="description" type="text" /></label>
-    <label>Image Source<input name="imageSource" type="text" /></label>
-    @*<button type="submit" asp-action="AnimalCreated">Submit</button>*@
+    </label><br />
+    <label>Age<input name="age" type="number" /></label><br />
+    <label>Description<input name="description" type="text" /></label><br />
+    <label>Image Source<input name="imageSource" type="text" /></label><br />
     <button type="submit">Submit</button>
 </form>

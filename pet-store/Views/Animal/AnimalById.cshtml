@@ -1,6 +1,6 @@
 ﻿@model pet_store.Models.Animal
 @{
-    ViewData["Title"] = $"{Model.Name} - details page";
+    ViewData["Title"] = $"{Model.Name}";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,14 +9,13 @@
 <div>
     <img src="@Model.ImageSource" width="100" height="100" />
     @Model.Category<br />
-    @Model.Age<br />
-    @Model.Description<br />
+    Age: @Model.Age<br />
+    Description: @Model.Description<br />
     <form method="post">
         <label for="comment" >
-            leave a comment:
+            leave a comment:<br />
             <input name="comment" type="text" />
         </label>
-        @*<button type="submit" asp-action="Commented" asp-route-id="@Model.AnimalID" asp-route-comment="comment.value">Send Comment</button>*@
         <button type="submit" asp-action="Commented" asp-route-id="@Model.AnimalID">Send Comment</button>
     </form>
     @if (@Model.Comments!.Count() > 0)

@@ -3,28 +3,17 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /*margin: auto;*/
-    /*margin: 1rem;*/
+    justify-content: center;
 }
 
 .card {
-    /* border: 1px solid black;*/
-    color:red;
-    background-color:red;
     margin-left:2%;
     margin-right:2%;
     width: 40%;
-    /*background: #FCF6F5FF;
-    height: 12rem;
-    width: 16rem;
-    margin: 9px;
-    border-radius: 13%;*/
+    background-color:#eee;
 }
 
 img {
-    /*display: block;*/
     margin-left: auto;
     margin-right: auto;
-    /*width: 5rem;*/
-    /*height: 5rem;*/
 }

@@ -1,6 +1,6 @@
 ﻿@model pet_store.Models.Animal
 @{
-    ViewData["Title"] = "Edit Animal";
+    ViewData["Title"] = $"Edit Animal - {Model.Name}";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,6 @@
 
 
 <form method="post" asp-action="AnimalEdited">
-    @*// asp-route-id="@Model.AnimalID">*@
     <label for="animalName">Name: <input name="name" type="text" placeholder="@Model.Name"></label><br />
     <label>
         Category Name:
@@ -21,8 +20,7 @@
             }
         </select>
     </label>
-    @*<label for="categoryName">Category Name: <input name="categoryName" type="text" placeholder="@ViewBag.CategoryName"></label><br />*@
-    <input name="id" value="@Model.AnimalID" hidden />
+    <input name="id" value="@Model.AnimalID" hidden /><br />
     <label for="age">Age: <input name="age" type="number" placeholder="@Model.Age"></label><br />
     <label for="description">Description: <input name="description" type="text" placeholder="@Model.Description"></label><br />
     <label for="imageSource">Image Source: <input name="imageSource" type="text" placeholder="@Model.ImageSource"></label><br />
