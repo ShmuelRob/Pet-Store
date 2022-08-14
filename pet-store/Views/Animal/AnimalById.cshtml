@@ -2,19 +2,24 @@
 @{
     ViewData["Title"] = $"{Model.Name}";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string? text = $"";
 }
 
-<h1>@Model.Name</h1><br />
+<h1>@Model.Name</h1>
+<br />
 
 <div>
     <img src="@Model.ImageSource" width="100" height="100" />
     @Model.Category<br />
     Age: @Model.Age<br />
-    Description: @Model.Description<br />
+    Description: @Model.Description<br /><br />
     <form method="post">
-        <label for="comment" >
             leave a comment:<br />
-            <input name="comment" type="text" />
+        <label for="visitor"> Name: 
+            <input name="visitor" type="text" />
+        </label><br />
+        <label for="content"> Comment 
+            <input name="content" type="text" />
         </label>
         <button type="submit" asp-action="Commented" asp-route-id="@Model.AnimalID">Send Comment</button>
     </form>
@@ -22,11 +27,14 @@
     {
         <div>
             Comments:
-            @foreach (var comment in @Model.Comments!.Select(c=> c.Content))
+            @foreach (var comment in @Model.Comments!)
             {
-                <p>@comment</p>
+                <p>
+                    @if (comment.Visitor is null){ text = "anonymus"; }
+                    else { text = @comment.Visitor; }
+                    @text:  @comment.Content
+                </p>
             }
         </div>
     }
-
 </div>

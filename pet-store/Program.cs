@@ -26,17 +26,3 @@ app.UseRouting();
 app.UseEndpoints(endpoints => endpoints.MapControllerRoute("default", "{controller=Home}/{Action=Index}/{id?}"));
 
 app.Run();
-
-
-
-
-
-/*
- * 1. finish the edit and the delete in the server
- * 1.5. check all the places with combobox
- * 2. make an option to move to all categories in the catalog
- * 2.5. in add new animal - instead of category name - make combobox
- * 3. make all the views pretty, put only what i need there
- * 4. handle all the exeptions - (where i have an option to enter a name of category or id that is not exist etc...)
- * 5. make an 404 page
- */

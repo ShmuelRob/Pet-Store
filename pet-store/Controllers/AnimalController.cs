@@ -12,12 +12,13 @@ namespace pet_store.Controllers
         public AnimalController(IAnimalRepository repository)
             => this.repository = repository;
         public IActionResult AnimalById(int id) => View(repository.GetAnimal(id));
-        public IActionResult Commented(int id, string comment)
+        public IActionResult Commented(int id, string content, string visitor)
         {
             var animal = repository.GetAnimal(id);
-            if (animal is null) return NotFound(); //View(); //return 404
+            if (animal is null) return RedirectToAction("AnimalById", new { id });
+            if (content is null) return RedirectToAction("AnimalById", new { id });
             var newComment = new Comment { CommentID = repository.Comments!.Count() + 1,
-                AnimalID = id, AnimalCommented = animal, Content = comment };
+                AnimalID = id, AnimalCommented = animal, Content = content, Visitor = visitor };
             repository.AddComment(id, newComment);
             animal.Comments!.Add(newComment);
             return RedirectToAction("AnimalById", new { id });

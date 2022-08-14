@@ -53,14 +53,14 @@ namespace pet_store.DAL
 
 
             modelBuilder.Entity<Comment>().HasData(
-                new { CommentID = 1, AnimalID = 1, Content = "king of animals" },
-                new { CommentID = 2, AnimalID = 2, Content = "the man's best friend" },
+                new { CommentID = 1, AnimalID = 1, Content = "king of animals", Visitor="Admin" },
+                new { CommentID = 2, AnimalID = 2, Content = "the man's best friend", Visitor = "Shmuel" },
                 new { CommentID = 3, AnimalID = 1, Content = "Simba is his brother" },
-                new { CommentID = 4, AnimalID = 5, Content = "licks itself" },
-                new { CommentID = 5, AnimalID = 6, Content = "can change colors" },
-                new { CommentID = 6, AnimalID = 7, Content = "the biggest fish in the world" },
+                new { CommentID = 4, AnimalID = 5, Content = "licks itself", Visitor = "Moshe" },
+                new { CommentID = 5, AnimalID = 6, Content = "can change colors", Visitor = "David" },
+                new { CommentID = 6, AnimalID = 7, Content = "the biggest fish in the world", Visitor = "Yossi" },
                 new { CommentID = 7, AnimalID = 9, Content = "you don't want to mess with this guy..." },
-                new { CommentID = 8, AnimalID = 10, Content = "the smartest bird" }
+                new { CommentID = 8, AnimalID = 10, Content = "the smartest bird", Visitor = "Avi" }
                 );
         }
     }
