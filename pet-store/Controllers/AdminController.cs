@@ -21,12 +21,15 @@ namespace pet_store.Controllers
             return View(repository.Categories);
         }
         public IActionResult AnimalsByCategory(int category)
-            => View(repository.Categories.Single(c => c.CategoryID == category));
+        {
+            var cat = repository.Categories.SingleOrDefault(c => c.CategoryID == category);
+            if (cat is null) return RedirectToAction("Index");
+            return View(cat);
+        }
         public IActionResult CreateAnimal() => View(repository.Categories);
         public IActionResult AnimalCreated(string animalName,
             int categoryID, int age, string description, string imageSource)
         {
-            //var categoryId = repository.Categories.Single(c => c.Name == categoryName).CategoryID;
             var animal = new Animal
             {
                 Name = animalName,
@@ -46,9 +49,9 @@ namespace pet_store.Controllers
         }
         public IActionResult EditAnimal(int id)
         {
-            var animal = repository.Animals.Single(a => a.AnimalID == id);
+            var animal = repository.Animals.SingleOrDefault(a => a.AnimalID == id);
+            if (animal is null) return RedirectToAction("Index");
             ViewBag.Categories = new Dictionary<string, int>();
-            //ViewBag.CategoryName = repository.Categories!.Single(c => c.CategoryID == animal.CategoryID).Name;
             repository.Categories!.ToList().ForEach(c => ViewBag.Categories.Add(c.Name!, c.CategoryID));
             return View(animal);
         }
@@ -62,7 +65,7 @@ namespace pet_store.Controllers
         }
         public IActionResult DeleteAnimal(int id)
         {
-            if(!repository.DeleteAnimal(id)) return View();
+            if(!repository.DeleteAnimal(id)) return RedirectToAction("Index");
             return RedirectToAction("Index");
         }
     }

@@ -13,8 +13,8 @@
     @foreach (var animal in Model.Animals!)
     {
         <div class="card">
-            @animal.Name<br />
-            <img src="@animal.ImageSource" width="100" height="100" />
+            <strong>@animal.Name</strong><br />
+            <img src="~/Assets/@animal.ImageSource" width="100" height="100" />
             <a asp-action="EditAnimal" asp-route-id="@animal.AnimalID">Edit</a>
             <a asp-action="DeleteAnimal" asp-route-id="@animal.AnimalID">Delete</a>
         </div>

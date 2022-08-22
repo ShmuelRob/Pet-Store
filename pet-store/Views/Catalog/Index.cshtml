@@ -26,7 +26,7 @@
     {
         <div class="card">
             <a asp-controller="Animal" asp-action="AnimalById" asp-route-id="@animal.AnimalID">@animal.Name</a><br />
-            <img src="@animal.ImageSource" width="100" height="100" />
+            <img src="Assets/@animal.ImageSource" width="100" height="100" />
             <a asp-controller="Animal" asp-action="AnimalById" asp-route-id="@animal.AnimalID">Show more</a>
         </div>
     }

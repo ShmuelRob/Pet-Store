@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NuGet.ProjectModel;
 using pet_store.Models;
+using System.Drawing;
 
 namespace pet_store.DAL
 {
@@ -13,21 +15,38 @@ namespace pet_store.DAL
             : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //var sources = new string[]
+            //{
+            //    /*0 - error */"https://www.computerhope.com/jargon/e/error.png",
+            //    /*1 - lion*/"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/800px-Lion_waiting_in_Namibia.jpg",
+            //    /*2 - dog*/"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg",
+            //    /*3 - eagle*/"https://www.birdlife.org/wp-content/uploads/2021/06/Eagle-in-flight-Richard-Lee-Unsplash-1-edited-scaled.jpg",
+            //    /*4 - shark*/"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/800px-White_shark.jpg",
+            //    /*5 - cat*/"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/330px-Cat03.jpg",
+            //    /*6 - chameleon*/"https://cdn.britannica.com/05/203605-050-59F5FB39/chameleon-on-branch.jpg",
+            //    /*7 - whale*/"https://www.imf.org/-/media/Images/IMF/FANDD/article-image/2019/December/chami-index.ashx",
+            //    /*8 - pigeon*/"http://www.dvarhamefarsem.co.il/Hot/20710/Rashit.JPG",
+            //    /*9 - alligator*/"https://whnt.com/wp-content/uploads/sites/20/2022/05/GettyImages-1171368832.jpg?w=960&h=540&crop=1",
+            //    ///*9 - alligator*/"https://whnt.com/wp-content/uploads/sites/20/2022/05/GettyImages-1171368832.jpg",
+            //    /*10 - owl*/"https://img.apmcdn.org/9fe734b0a7596f13b98ccd5152262fe7d590ce4d/widescreen/a6c353-20220405-screech-owl-1000.jpg",
+            //};
+
             var sources = new string[]
             {
-                /*0 - error */"https://www.computerhope.com/jargon/e/error.png",
-                /*1 - lion*/"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/800px-Lion_waiting_in_Namibia.jpg",
-                /*2 - dog*/"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg",
-                /*3 - eagle*/"https://www.birdlife.org/wp-content/uploads/2021/06/Eagle-in-flight-Richard-Lee-Unsplash-1-edited-scaled.jpg",
-                /*4 - shark*/"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/800px-White_shark.jpg",
-                /*5 - cat*/"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/330px-Cat03.jpg",
-                /*6 - chameleon*/"https://cdn.britannica.com/05/203605-050-59F5FB39/chameleon-on-branch.jpg",
-                /*7 - whale*/"https://www.imf.org/-/media/Images/IMF/FANDD/article-image/2019/December/chami-index.ashx",
-                /*8 - pigeon*/"http://www.dvarhamefarsem.co.il/Hot/20710/Rashit.JPG",
-                /*9 - alligator*/"https://whnt.com/wp-content/uploads/sites/20/2022/05/GettyImages-1171368832.jpg?w=960&h=540&crop=1",
-                ///*9 - alligator*/"https://whnt.com/wp-content/uploads/sites/20/2022/05/GettyImages-1171368832.jpg",
-                /*10 - owl*/"https://img.apmcdn.org/9fe734b0a7596f13b98ccd5152262fe7d590ce4d/widescreen/a6c353-20220405-screech-owl-1000.jpg",
+                "error",
+                "animal1.jpg",
+                "animal2.jpg",
+                "animal3.webp",
+                "animal4.jpg",
+                "animal5.jpg",
+                "animal6.webp",
+                "animal7.jpg",
+                "animal8.jfif",
+                "animal9.webp",
+                "animal10.jpg",
             };
+            
+
 
             modelBuilder.Entity<Category>().HasData(
                 new { CategoryID = 1, Name = "Mammal" },

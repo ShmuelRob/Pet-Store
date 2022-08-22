@@ -11,7 +11,9 @@ namespace pet_store.Controllers
         public IActionResult Index(int id = 1)
         {
             repository.Categories!.ToList().ForEach(c => ViewData.Add(c.Name!, c.CategoryID.ToString()));
-            return View(repository.GetCategory(id));
+            var category = repository.GetCategory(id);
+            category ??= repository.GetCategory(1);
+            return View(category);
         }
     }
 }

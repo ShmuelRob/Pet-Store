@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using pet_store.DAL;
 using pet_store.Models;
 using pet_store.Services.AnimalServices;
 
@@ -11,7 +9,12 @@ namespace pet_store.Controllers
         readonly IAnimalRepository repository;
         public AnimalController(IAnimalRepository repository)
             => this.repository = repository;
-        public IActionResult AnimalById(int id) => View(repository.GetAnimal(id));
+        public IActionResult AnimalById(int id)
+        {
+            var animal = repository.GetAnimal(id);
+            if (animal is null) return RedirectToAction("Index", "Home");
+            return View(animal);
+        }
         public IActionResult Commented(int id, string content, string visitor)
         {
             var animal = repository.GetAnimal(id);
