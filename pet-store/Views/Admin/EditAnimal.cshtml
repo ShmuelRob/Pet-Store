@@ -15,8 +15,14 @@
         <select name="categoryID">
             @foreach (var item in ViewBag.Categories)
             {
-                if (item.Value!.Equals(Model.CategoryID)){<option value="@item.Value" selected>@item.Key</option>}
-                else {<option value="@item.Value" selected>@item.Key</option>}
+                if (item.Value!.Equals(Model.CategoryID))
+                {
+                    <option value="@item.Value" selected>@item.Key</option>
+                }
+                else
+                {
+                    <option value="@item.Value">@item.Key</option>
+                }
             }
         </select>
     </label>

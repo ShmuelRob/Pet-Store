@@ -20,6 +20,7 @@ namespace pet_store.Services.AdminServices
         }
         public void AddAnimal(Animal animal)
         {
+            if (animal.Name is null) return;
             animal.AnimalID = context.Animals!.OrderBy(a=> a.AnimalID).Last().AnimalID + 1;
             context.Animals!.Add(animal);
             context.SaveChanges();
@@ -41,7 +42,6 @@ namespace pet_store.Services.AdminServices
         {
             var animal = Animals.SingleOrDefault(a => a.AnimalID == id);
             if (animal is null) return false;
-            //Animals.ToList().Remove(Animals.Single(a => a.AnimalID == id));
             context.Remove(animal);
             context.SaveChanges();
             return true;

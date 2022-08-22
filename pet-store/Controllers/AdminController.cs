@@ -44,6 +44,8 @@ namespace pet_store.Controllers
         public IActionResult CreateCategory() => View();
         public IActionResult CategoryCreated(string categoryName)
         {
+
+            if (categoryName is null) return RedirectToAction("Index");
             repository.AddCategory(new Category { CategoryID = repository.Categories.Count() + 1, Name = categoryName });
             return RedirectToAction("Index");
         }
@@ -58,14 +60,20 @@ namespace pet_store.Controllers
         public IActionResult AnimalEdited(int id, string name, int categoryID,
             int age, string description, string imageSource)
         {
-            var animal = new Animal { CategoryID = categoryID, Age = age,
-                Description = description, ImageSource = imageSource, Name = name };
+            var animal = new Animal
+            {
+                CategoryID = categoryID,
+                Age = age,
+                Description = description,
+                ImageSource = imageSource,
+                Name = name
+            };
             repository.EditAnimal(id, animal);
             return RedirectToAction("AnimalById", "animal", new { id });
         }
         public IActionResult DeleteAnimal(int id)
         {
-            if(!repository.DeleteAnimal(id)) return RedirectToAction("Index");
+            if (!repository.DeleteAnimal(id)) return RedirectToAction("Index");
             return RedirectToAction("Index");
         }
     }
