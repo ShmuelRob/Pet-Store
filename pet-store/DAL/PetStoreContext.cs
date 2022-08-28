@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NuGet.ProjectModel;
 using pet_store.Models;
-using System.Drawing;
 
 namespace pet_store.DAL
 {
